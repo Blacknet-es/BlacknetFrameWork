@@ -1,0 +1,71 @@
+/* 
+    Document   : form
+    Created on : 07-sep-2010, 18:28:57
+    Author     : javi
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+#form {
+    padding: 10px;
+}
+
+#form #bloque-form{
+   vertical-align: top;
+}
+
+#form #barra-widgets{
+    width: 240px;
+    padding-top: 15px;
+    vertical-align: top;
+}
+
+#form .clear{
+    clear: both;
+}
+
+#form fieldset{
+    padding: 10px;
+    width: 93%;
+    margin-bottom: 20px;
+    
+}
+
+#form legend{
+    color: #5c5c5c;
+}
+
+#form textarea{
+   padding: 0px;
+   width: 95%;
+   margin: 0px;
+}
+
+#form input{
+    width: 95%;
+}
+
+#form input.titulo{
+    font-size: 20px;
+}
+
+#form input[type="checkbox"]{
+    width: 20px;
+}
+
+#form #barra-widgets div.ui-widget{
+    margin-bottom: 20px;
+}
+
+#form #barra-widgets div.ui-widget div{
+    border-top: 0px !important;
+    padding: 5px;
+}
+
+#form #barra-widgets div.ui-widget h3{
+    padding: 5px;
+}

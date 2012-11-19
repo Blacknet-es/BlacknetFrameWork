@@ -1,0 +1,36 @@
+#galerias{
+    padding-top: 4px;
+}
+
+.elemento{
+    width: 100px;
+    height: 100px;
+    float: left;
+    padding: 0px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.elemento span{
+    padding: 0px !important;
+}
+
+.elemento img{
+    margin: 4px;
+    border: 1px solid #aaa;
+    float: left;
+    position: relative;
+}
+
+.elemento p{
+    text-align: center;
+    width: 90px;
+    margin: 0px;
+    padding: 3px;
+    position: absolute;
+    bottom: 5px;
+}
+

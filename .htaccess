@@ -1,0 +1,23 @@
+Options +FollowSymLinks
+
+RewriteEngine on
+
+#RewriteCond %{HTTP_HOST} !^www.difusiongrafica.com$
+#RewriteRule ^(.*)$ http://www.difusiongrafica.com/$1 [L,R=301]
+
+Rewriterule ^([a-zA-Z0-9]+)_([a-zA-Z0-9]+)_([a-zA-Z0-9_-]+)_(.+).html/([a-zA-Z0-9]+)$ index.php?seccion=$1&accion=$2&id=$3&titulo=$4&pag=$5 [L,NC]
+Rewriterule ^([a-zA-Z0-9]+)_([a-zA-Z0-9]+)_([a-zA-Z0-9_-]+)_(.+).html$ index.php?seccion=$1&accion=$2&id=$3&titulo=$4 [L,NC]
+Rewriterule ^([a-zA-Z0-9]+)_([a-zA-Z0-9]+).html$ index.php?seccion=$1&accion=$2 [L,NC]
+Rewriterule ^([a-zA-Z0-9]+).html$ index.php?seccion=$1 [L,NC]
+
+Rewriterule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/(.+)/([0-9]+)/([a-zA-Z0-9_]+)/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)$ index.php?seccion=$1&accion=$2&id=$3&titulo=$4&pag=$5&orden=$6&direccion=$7&pp=$8 [L,NC]
+Rewriterule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/(.+)/([0-9]+)/([a-zA-Z0-9_]+)/([a-zA-Z0-9]+)$ index.php?seccion=$1&accion=$2&id=$3&titulo=$4&pag=$5&orden=$6&direccion=$7 [L,NC]
+Rewriterule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/(.+)/([0-9]+)/([a-zA-Z0-9_]+)$ index.php?seccion=$1&accion=$2&id=$3&titulo=$4&orden=$5&direccion=$6 [L,NC]
+Rewriterule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/(.+)/([0-9]+)$ index.php?seccion=$1&accion=$2&id=$3&titulo=$4&pag=$5 [L,NC]
+Rewriterule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/(.+)$ index.php?seccion=$1&accion=$2&id=$3&titulo=$4 [L,NC]
+Rewriterule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ index.php?seccion=$1&accion=$2 [L,NC]
+Rewriterule ^([a-zA-Z0-9_-]+)$ index.php?seccion=$1 [L,NC]
+
+#Rewriterule ^(.*)/([a-zA-Z0-9]+)_([a-zA-Z0-9]+)_([0-9]+)_(.+).html$ index.php?lan=$1&seccion=$2&accion=$3&id=$4&titulo=$5
+#Rewriterule ^(.*)/([a-zA-Z0-9]+)_([a-zA-Z0-9]+).html$ index.php?lan=$1&seccion=$2&accion=$3 
+#Rewriterule ^(.*)/([a-zA-Z0-9]+).html$ index.php?lan=$1&seccion=$2 

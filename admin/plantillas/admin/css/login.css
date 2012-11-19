@@ -1,0 +1,29 @@
+/* 
+    Document   : login
+    Created on : 13-sep-2010, 13:22:27
+    Author     : javi
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+#login{
+    width: 300px;
+    margin: auto;
+    
+    padding: 20px;
+}
+
+#login h3{
+    padding: 5px;
+}
+
+#login form{
+    border-top: none !important;
+    padding: 20px;
+}
+

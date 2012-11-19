@@ -1,0 +1,58 @@
+#barra_acciones {
+    height: 28px;
+    padding-left: 20px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 3px;
+    margin-bottom: 30px;
+}
+
+#barra_acciones h1 {
+    margin-top: 0px;
+    line-height: 30px;
+    font-size: 14px;
+    display: block;
+    float: left;
+    margin-right: 20px;
+}
+
+#barra_acciones a:link, #barra_acciones a:visited {
+    display: block;
+    font-size: 11px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+}
+
+#barra_acciones a:hover, #barra_acciones a:active {
+}
+
+#barra_acciones img {
+    border: 0px;
+    margin-bottom: 6px;
+}
+
+#barra_acciones .izq {
+    float: left;
+    margin-right: 5px;
+}
+
+#barra_acciones .drcha {
+    float: right;
+    margin-left: 5px;
+}
+
+.form_block {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+}
+
+.form_block fieldset{
+	margin-bottom: 15px;
+}
+
+.form_block fieldset legend{
+	font-weight: bold;
+	font-size: 13px;
+}

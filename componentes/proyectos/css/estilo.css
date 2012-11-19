@@ -1,0 +1,105 @@
+/* 
+    Document   : estilo
+    Created on : 02-sep-2010, 12:44:08
+    Author     : javierclavain
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+.proyecto{
+    text-align: center;
+    float: left;
+    margin-left: 20px;
+    width: 190px;
+    /*height: 200px;
+    margin-bottom: 15px;*/
+    background: url('loader.gif') no-repeat 90px 50px;
+    
+}
+
+.primero{
+    margin-left: 0px !important;
+}
+
+#proyecto a.img, .proyecto a.img{
+    width: 190px;
+    height: 121px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#barra a.img img{
+    background: white;
+    border: 1px solid #d3d4d5;
+    margin-bottom: 20px;
+}
+
+#miniaturas a{
+    margin-left: 18px;
+    float: left;
+    text-align: center;
+    margin-bottom: 20px
+}
+
+.proyecto img, #proyecto img{
+    border: 1px solid #d3d4d5;
+    
+    margin-bottom: 30px;
+}
+
+#proyecto img{
+    background: white;
+}
+
+.proyecto h3{
+    text-align: center;
+    font-family: Georgia;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: normal;
+    
+}
+
+.proyecto h3.titulo{
+    margin-bottom: 15px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.proyecto p.titulo{
+    margin-bottom: 20px;
+    font-size: 13px;
+    text-align: center;
+}
+
+#proyecto div{
+    line-height: 14px;
+}
+
+
+#proyecto h4{
+    font-family: Georgia;
+    font-style: italic;
+    font-size: 14px;
+    color: #8a9499;
+    border: none;
+    line-height: 16px;
+    padding: 0px;
+    margin-top: 5px;
+    font-weight: normal;
+    margin-bottom: 20px;
+
+}
+
+#proyecto .texto{
+    margin-bottom: 20px;
+}
+
+#miniaturas img{
+    margin-bottom: 10px;
+}

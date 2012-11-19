@@ -1,0 +1,46 @@
+#menu{
+    border-bottom: 2px solid #777;
+}
+
+#menu a:link, #menu a:visited{
+    
+    font-size: 18px;
+    
+    
+}
+
+#menu a:active, #menu a:hover, #menu a.active{
+    color: #000;
+}
+
+#submenu{
+    margin-bottom: 20px;
+}
+
+#submenu a:link, #submenu a:visited{
+    color: #297faa;
+    font-family: Georgia;
+    font-style: italic;
+    font-size: 16px;
+    
+
+}
+
+#submenu a:active, #submenu a:hover, #submenu a.active{
+    color: #000;
+}
+
+#submenu span.separador{
+    display: inline-block;
+    background: url('../img/separador.png') no-repeat;
+    width: 8px;
+    height: 18px;
+    margin-right: 12px;
+    margin-left: 12px;
+    position: relative;
+    top: -3px;
+}
+
+#submenu hr{
+    margin-top: 3px;
+}
