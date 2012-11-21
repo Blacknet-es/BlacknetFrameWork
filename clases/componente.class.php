@@ -7,8 +7,9 @@
  * @author Difusión Gráfica
  */
 class componente {
-    //put your code here
-   
+    
+    var $id;
+    var $orden;
     var $nombre;
     var $metades;
     var $metatags;

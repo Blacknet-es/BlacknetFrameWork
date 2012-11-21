@@ -25,7 +25,10 @@ include ($app->ruta_absoluta.'/includes/cadenas.php');
 /* Incluimos la clase componente de donde heredaran los demás componentes */
 include($app->ruta_absoluta.'/clases/componente.class.php');
 include($app->ruta_absoluta.'/clases/imagen.class.php');
-/* Incluimos las demás clases de los componentes */
+
+/* Esto debe desaparecer. Incluimos las demás clases de los componentes 
+ * la inclusion de clases debe hacerse desde el controlador de cada componente
+ */
 cargarClases($app->ruta_absoluta.'/componentes/');
 
 //incluimos la plantilla principal de la aplicacion

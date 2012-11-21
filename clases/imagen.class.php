@@ -24,6 +24,9 @@ class imagen {
         global $app;
 
         //Obetenemos la ruta absoluta de la imagen
+        
+        //En esta funcion debemos hacer que la ruta sea relativa y saltarnos este paso.
+        //asi se hace más portable la aplicación.
         $ruta_relativa = substr($this->ruta, strlen($app->ruta_base));
         $ruta_absoluta = $app->ruta_absoluta.'/'.$ruta_relativa;
 

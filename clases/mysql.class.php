@@ -38,7 +38,12 @@ class mysql {
         return $resultado;
     }
 
+    //corrección del error tipográfico
     public function extarerArray($consulta) {
+        $this->extraerArray($consulta);
+    }
+    
+    public function extraerArray($consulta){
         return mysql_fetch_array($consulta);
     }
 
