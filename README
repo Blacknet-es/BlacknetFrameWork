@@ -1,0 +1,9 @@
+Blacknet Framework v0.10
+
+Partimos desde la última versión usada en difusión gráfica.
+Ahora debemos añadir un MVC real.
+Disminuir el acoplamiento de los componentes y aumentar la cohesión y 
+flexibilidad de los mismos desde el núcleo del sistema.
+
+Se irá añadiendi más información acerca del proyecto a medida que vayamos analizando
+el código y su estructura.
