@@ -14,7 +14,7 @@
         <meta name="revisit-after" content="1 days" />
         <meta name="robots" content="index, follow" />        
 
-        <? echo mostrarCabecera(); ?>
+        <? $this->renderHeader(); ?>
 
         <meta name="title" content="<? echo $app->nombre_app; ?>" />
         <meta name="description" content="<? echo $app->metades; ?>" />
@@ -25,16 +25,16 @@
     </head>
 
     <body>     
-        <? mostrarComponente('menu'); ?>
+        <? $app->view->renderAction('menu') ?>
         
-        <? mostrarComponente('inicio','carrusel'); ?>
+        <? $app->view->renderAction('inicio','carrusel'); ?>
         <hr/>
         <div id="contenedor" class="container-fluid">
             <div id="contenido" class="row-fluid">
-                <div class="span12"><? mostrarContenido(); ?></div>
+                <div class="span12"><? $app->view->renderComponent(); ?></div>
             </div><!-- fin contenido -->
         </div><!-- fin contenedor -->
-        <div id="pie" class="container-fluid"><? mostrarComponente('pie'); ?></div>
+        <div id="pie" class="container-fluid"><? $app->view->renderAction('pie'); ?></div>
 
         <!-- carga de javascripts -->
         <script type="text/javascript" src="<? echo $app->ruta_include; ?>/jquery-ui/js/jquery.js"></script>
