@@ -12,8 +12,13 @@
  */
 class mysql {
 
+    private $tabla;
+    private $where;
+    private $order;
+    private $order_mode;
+    private $limit_first;
+    private $limit_count;
     private $conexion;
-    private $total_consultas;
 
     public function mysql($app) {
         global $app;
@@ -24,9 +29,27 @@ class mysql {
             mysql_query ("SET NAMES 'utf8'");
         }
     }
+    
+    public function select($tabla){
+        $this->tabla = $tabla;
+        return $this;
+    }
+    
+    public function where($where){
+        $this->where = $where;
+    }
+    
+    public function order($order,$order_mode){
+        $this->order = $order;
+        $this->order_mode = $order_mode;
+    }
+    
+    public function limit ($first,$count){
+        $this->limit_first = $first;
+        $this->limit_count = $count;
+    }
 
     public function consulta($consulta) {
-        $this->total_consultas++;
         $resultado = mysql_query($consulta, $this->conexion);
         mysql_query ("SET NAMES 'utf8'");
          mysql_set_charset('utf8');
@@ -49,10 +72,6 @@ class mysql {
 
     public function numFilas($consulta) {
         return mysql_num_rows($consulta);
-    }
-
-    public function totalConsultas() {
-        return $this->total_consultas;
     }
 
 }

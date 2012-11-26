@@ -34,7 +34,7 @@ class app {
     var $db_user;
     var $db_pass;
     /* MVC */
-    var $model;
+    var $data;
     var $view;
     var $controller;
     /* DEBUG */
@@ -128,7 +128,29 @@ class app {
         $this->controller->{$this->accion.'Action'}();
     }
     
+    public function renderAction($component, $action = 'index'){
+        //funcion que ejecuta un modulo de un componente concreto
+        //Posiblemente dentro de un bloque
+        
+        $controlador = 'controller'.ucfirst($component).'.php';
+        $carpeta = '/componentes/'.$component.'/';
+        
+        $this->includeFile($carpeta,$controlador);
+        $class = $component.'Controller';
+        
+        $controller = new $class($component);
+        $controller->{$action.'Action'}();
+    }
+    
+    public function renderComponent(){
+        global $app;
+        $data = $this->data;
+        include($this->view);
+    }
+
+
     public function includeFile($carpeta,$fichero){
+        global $app;
         $ruta = $this->ruta_absoluta.$carpeta.$fichero;
         
         if (!include_once ($ruta)){

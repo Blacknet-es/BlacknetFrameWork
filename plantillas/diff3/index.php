@@ -25,16 +25,16 @@
     </head>
 
     <body>     
-        <? $app->view->renderAction('menu') ?>
+        <? $app->renderAction('menu') ?>
         
-        <? $app->view->renderAction('inicio','carrusel'); ?>
+        <? $app->renderAction('inicio','carrusel'); ?>
         <hr/>
         <div id="contenedor" class="container-fluid">
             <div id="contenido" class="row-fluid">
-                <div class="span12"><? $app->view->renderComponent(); ?></div>
+                <div class="span12"><? $app->renderComponent(); ?></div>
             </div><!-- fin contenido -->
         </div><!-- fin contenedor -->
-        <div id="pie" class="container-fluid"><? $app->view->renderAction('pie'); ?></div>
+        <div id="pie" class="container-fluid"><? $app->renderAction('pie'); ?></div>
 
         <!-- carga de javascripts -->
         <script type="text/javascript" src="<? echo $app->ruta_include; ?>/jquery-ui/js/jquery.js"></script>

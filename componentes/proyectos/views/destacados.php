@@ -1,12 +1,5 @@
-<?php
-/* DIFF 3.0 By Difusion Grafica
- * Framework php dinámico
- */
-
-$proyectos = new proyectos('','',1); /* Seleccionamos los proyectos destacados*/
-?>
 <ul class="thumbnails" id="destacados">
-    
+<? $proyectos = $data; ?>
 <? foreach ($proyectos->proyecto as $p): ?>
     <li style="background-color: <? echo $p->color; ?>;" class="span4 thumbnail">
     <img class="span12" src="<? echo $app->ruta_base; ?>/entorno.php?seccion=proyectos&amp;accion=recorte&amp;id=<? echo $p->img_principal; ?>" alt="<?=$p->metades?>"/>

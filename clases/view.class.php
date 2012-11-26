@@ -9,13 +9,13 @@ class view{
     
     public function renderView($file){
         global $app;        
-        $app->includeFile('/componentes/'.$this->seccion.'/',$file);
+        $app->includeFile('/componentes/'.$this->seccion.'/views/',$file);
         
     }
     
     public function renderAction($component, $action){
         global $app;
-        $app->includeFile('/componentes/'.$component.'/',$action.'.php');
+        $app->includeFile('/componentes/'.$component.'/views/',$action.'.php');
     }
 }
 ?>
