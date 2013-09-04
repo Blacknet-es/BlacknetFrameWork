@@ -13,7 +13,7 @@
 
 // GENERAL DESCRIPCION Y KEYWORDS
 
-$nombre_app = "Programación web en Cádiz";
+$nombre_app = "Blacknet Framework";
 $metades = "";
 $metatags = "";
 

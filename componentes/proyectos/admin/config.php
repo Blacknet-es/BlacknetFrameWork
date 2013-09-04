@@ -31,12 +31,4 @@ $acciones->btn_destacado = true;
 //creamos añadimos las secciones del menu
 $sec = new seccion("Proyectos", "proyectos",'ui-icon-folder-collapsed');
 
-$categorias = new categorias();
-
-foreach ($categorias->elementos as $c) {
-    $orden = 1;
-    $sec->addSubseccion(new subseccion($c->nombre, 'proyectos&categoria='.$c->id, '', $orden, ''));
-    $orden++;
-}
-
 $menu->addSeccion($sec);

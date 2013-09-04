@@ -23,7 +23,7 @@ class enlaces extends listado {
 
         $res = $c->consulta($consulta);
 
-        while ($row = $c->extarerArray($res)) {
+        while ($row = $c->extraerArray($res)) {
             $p = new enlace($row['id']);
             $this->elementos[] = $p;
         }
@@ -49,7 +49,7 @@ class enlace extends componente {
 
             $res = $c->consulta($consulta);
 
-            $row = $c->extarerArray($res);
+            $row = $c->extraerArray($res);
 
             $this->id = $id;
             $this->nombre = $row['nombre'];

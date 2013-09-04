@@ -55,6 +55,37 @@ class controller{
         global $app;
         include($app->ruta_absoluta.'/componentes/'.$this->component.'/views/header.php');
     }
+    
+    public function renderAdmin($file, $data = null){
+        global $app;        
+              
+        include($app->ruta_absoluta.'/componentes/'.$this->component.'/admin/views/'.$file);
+    }
+    
+    public function renderAdminWithLayout($file, $data = null){
+        global $app;
+        global $menu;
+        
+        $ruta = $app->ruta_absoluta.'/componentes/'.$app->seccion.'/admin/views/'.$file;
+        $rutaGeneral = $app->ruta_absoluta.'/admin/generalviews/'.$file;
+        $app->data = $data;
+        
+        if (file_exists($ruta)){
+            $app->view = $app->ruta_absoluta.'/componentes/'.$app->seccion.'/admin/views/'.$file;
+        }
+        else{
+            $app->view = $rutaGeneral;
+        }
+        
+        
+        
+        include ($app->ruta_absoluta.'/admin/plantillas/admin/index.php');
+    }
+    
+    public function renderAdminHeader(){
+        global $app;
+        include($app->ruta_absoluta.'/componentes/'.$this->component.'/admin/views/header.php');
+    }
 }
 
 ?>

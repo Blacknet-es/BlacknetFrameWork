@@ -128,6 +128,21 @@ class app {
         $this->controller->{$this->accion.'Action'}();
     }
     
+    public function executeAdminController(){
+        $this->includeFile('/clases/', 'controller.class.php'); /* Cargamos el controlador general */
+        
+        /* Cargamos el controlador del componente */
+        $controlador = 'controllerAdmin'.ucfirst($this->seccion).'.php';
+        $carpeta = '/componentes/'.$this->seccion.'/admin/';
+        
+        $this->includeFile($carpeta,$controlador);
+        $class = $this->seccion.'Controller';
+        
+        $this->controller = new $class();
+        
+        $this->controller->{$this->accion.'Action'}();
+    }
+    
     public function renderAction($component, $action = 'index'){
         //funcion que ejecuta un modulo de un componente concreto
         //Posiblemente dentro de un bloque
@@ -142,10 +157,31 @@ class app {
         $controller->{$action.'Action'}();
     }
     
+    public function renderAdminAction($component, $action = 'index'){
+        //funcion que ejecuta un modulo de un componente concreto
+        //Posiblemente dentro de un bloque
+        
+        $controlador = 'controllerAdmin'.ucfirst($component).'.php';
+        $carpeta = '/componentes/'.$component.'/admin/';
+        
+        $this->includeFile($carpeta,$controlador);
+        $class = $component.'Controller';
+        
+        $controller = new $class($component);
+        $controller->{$action.'Action'}();
+    }
+    
     public function renderComponent(){
         global $app;
         $data = $this->data;
         include($this->view);
+    }
+    
+    public function loadAdminClasses(){
+        $this->includeFile('/admin/clases/', 'menu.class.php');
+        $this->includeFile('/admin/clases/', 'acciones.class.php');
+        $this->includeFile('/admin/clases/', 'registro.class.php');
+        $this->includeFile('/admin/clases/', 'usuario.class.php');
     }
 
 
