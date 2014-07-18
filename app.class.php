@@ -38,7 +38,7 @@ class app {
     var $view;
     var $controller;
     /* DEBUG */
-    var $debug_mode;
+    var $debug;
     var $debug_info = array();
     var $debug_error = array();
 

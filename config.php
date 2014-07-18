@@ -1,6 +1,6 @@
 <?
 /***********************************************************
-*           CONFIGURACION Blacknet Framework 0.10          *
+*           CONFIGURACION Blacknet Framework 0.11          *
 * En este fichero encontraremos todos los datos relativos  *
 * a la base de datos y otros parámetros de configuración   *
 * necesarios para el correcto funcionamiento de la web.    *
@@ -16,6 +16,7 @@
 $nombre_app = "Blacknet Framework";
 $metades = "";
 $metatags = "";
+$deubg = true; //Activamos modo debug
 
 // IDIOMA POR DEFECTO
 
@@ -27,23 +28,22 @@ $plantilla = "diff3";
 
 // BASE DE DATOS
 
-if ($_SERVER['SERVER_ADDR'] == '192.168.1.103'){ //DETECTA SI TRABAJAMOS EN LOCAL O EN REMOTO Y CARGA UNA U OTRA BASE DE DATOS
+if ($_SERVER['SERVER_ADDR'] == '192.168.1.103') { //DETECTA SI TRABAJAMOS EN LOCAL O EN REMOTO Y CARGA UNA U OTRA BASE DE DATOS
 
   //CARPETA PARA CARGA LOCAL
-  $carpeta = "/bn/BlacknetFramework";
+  $carpeta = "/ibarceona";
 
   $db_host='localhost'; // Host al que conectar, habitualmente es el ‘localhost’
-  $db_name='blacknet'; // Nombre de la Base de Datos que se desea utilizar
+  $db_name='ibarcelona'; // Nombre de la Base de Datos que se desea utilizar
   $db_user='root';   // Nombre del usuario con permisos para acceder
   $db_pass='j090482';  // Contraseña de dicho usuario
 
-}
-else{
+} else {
 
-  $carpeta = "/bn/BlacknetFramework";
+  $carpeta = "/ibarcelona";
 
   $db_host='localhost'; // Host al que conectar, habitualmente es el ‘localhost’
-  $db_name='blacknet'; // Nombre de la Base de Datos que se desea utilizar
+  $db_name='ibarcelona'; // Nombre de la Base de Datos que se desea utilizar
   $db_user='root';   // Nombre del usuario con permisos para acceder
   $db_pass='j090482'; // Contraseña de dicho usuario
 }
