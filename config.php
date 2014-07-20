@@ -13,10 +13,10 @@
 
 // GENERAL DESCRIPCION Y KEYWORDS
 
-$nombre_app = "Blacknet Framework";
+$nombre_app = "InterBarcelona";
 $metades = "";
 $metatags = "";
-$deubg = true; //Activamos modo debug
+$debug = true; //Activamos modo debug
 
 // IDIOMA POR DEFECTO
 
@@ -34,7 +34,7 @@ if ($_SERVER['SERVER_ADDR'] == '192.168.1.103') { //DETECTA SI TRABAJAMOS EN LOC
   $carpeta = "/ibarceona";
 
   $db_host='localhost'; // Host al que conectar, habitualmente es el ‘localhost’
-  $db_name='ibarcelona'; // Nombre de la Base de Datos que se desea utilizar
+  $db_name='interbarcelona'; // Nombre de la Base de Datos que se desea utilizar
   $db_user='root';   // Nombre del usuario con permisos para acceder
   $db_pass='j090482';  // Contraseña de dicho usuario
 
@@ -43,15 +43,9 @@ if ($_SERVER['SERVER_ADDR'] == '192.168.1.103') { //DETECTA SI TRABAJAMOS EN LOC
   $carpeta = "/ibarcelona";
 
   $db_host='localhost'; // Host al que conectar, habitualmente es el ‘localhost’
-  $db_name='ibarcelona'; // Nombre de la Base de Datos que se desea utilizar
+  $db_name='interbarcelona'; // Nombre de la Base de Datos que se desea utilizar
   $db_user='root';   // Nombre del usuario con permisos para acceder
   $db_pass='j090482'; // Contraseña de dicho usuario
 }
 
 // FIN BASE DE DATOS
-
-
-
-
-
-?>

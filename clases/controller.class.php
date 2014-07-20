@@ -11,18 +11,15 @@ class controller{
     public function __construct($component = null) {
         global $app;
         
-        if ($component === null){
+        if ($component === null) {
             $this->component = $app->seccion;
-        }
-        else{
+        } else{
             $this->component = $component;
         }
-        
-        
     }
     
     /* funciones generales de la clase controlador */
-    public function addModel($name,$component = null){
+    public function addModel($name, $component = null){
         global $app;
         if ($component != null){
             

@@ -107,7 +107,10 @@ class app {
         /* Esta función carga los modelos generalizados */
         
         /* Incluimos la clase componente de donde heredaran los demás componentes */
-        $this->includeFile('/clases/','componente.class.php'); /* Cargamos el modelo generalizado */
+        $this->includeFile('/clases/','component.class.php'); /* Cargamos el modelo generalizado */
+        
+        /* Incluimos la clase componente de donde heredaran los demás componentes */
+        $this->includeFile('/clases/','collection.class.php'); /* Cargamos el modelo generalizado */
                 
         /* Cargamos la clase genérica de imagen */
         $this->includeFile('/clases/', 'imagen.class.php');
