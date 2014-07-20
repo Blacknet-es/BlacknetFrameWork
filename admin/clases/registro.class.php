@@ -1,16 +1,6 @@
 <?php
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of registro
- *
- * @author javi
- */
-
-class registros extends listado{
+class registros extends collection 
+{
     public function __construct($limit = "") {
         global $app;
         $c = new mysql($app);
@@ -63,4 +53,3 @@ class registro {
 
     }
 }
-?>

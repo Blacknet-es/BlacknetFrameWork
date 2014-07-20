@@ -18,7 +18,7 @@ $app->loadModel(); //cargamos los modelos necesarios
 
 $app->executeController(); //Ejecutamos el controlador
 
-if ($app->debug_mode): ?>
+if ($app->debug): ?>
 <div class="error">
     <ul>
     <? foreach ($app->debug_error as $err): ?>

@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 
-class usuario {
+class usuario extends component 
+{
     var $id;
     var $nombre;
     var $nick;
@@ -12,18 +13,17 @@ class usuario {
     var $mail;
 
     function  __construct() {
-        global $app;
         
         $cookie = '';
         if (isset ($_COOKIE['diff_admin'])){
             $cookie = $_COOKIE['diff_admin'];
         }        
 
-        $c = new mysql($app);
+        $c = new mysql();
         $consulta = "SELECT * FROM usuario WHERE SHA1(ID) = '$cookie'";
         $res = $c->consulta($consulta);
 
-        if ($c->numFilas($res) > 0){
+        if ($c->numRows()){
             $row = $c->extarerArray($res);
             $this->id = $row['ID'];
             $this->nombre = $row['nombre'];

@@ -24,7 +24,7 @@ $default_lan = "es";
 
 //PLANTILLA A CARGAR
 
-$plantilla = "diff3";
+$plantilla = "ibarcelona";
 
 // BASE DE DATOS
 
