@@ -15,6 +15,7 @@ class component {
     var $metatags;
     var $created_at;
     var $updated_at;
+    private $config;
     
     public function __construct ($id = null)
     {
@@ -29,15 +30,38 @@ class component {
         return property_exists($this, $propiedad);
     }
     
+    private function config ()
+    {
+        $vars = get_class_vars(get_class($this));
+        
+        foreach ($vars as $v) {
+            if (!isset($config[$v])) {
+                $this->addWidget($v);
+            }
+        }
+    }
+    
+    private function addWidget($var, $widget = 'inputtext')
+    {
+        $this->config[$var] = array (
+            'widget' => $widget,
+        );
+    }
+    
+    private function getValue($field, $value)
+    {
+        
+    }
+    
     private function loadData()
     {
         $mysql = new mysql();
         $row = $mysql->query("SELECT * FROM $this->table WHERE id = $id");
-        $vars = get_class_vars(get_class($mi_clase));
+        $vars = get_class_vars(get_class($this));
         
         foreach ($vars as $v) {
             if (isset($row->{$v})) {
-                $this->{$v} = $row->{$v};
+                $this->{$v} = $this->getValue($v, $row->{$v});
             }
         }
     }   

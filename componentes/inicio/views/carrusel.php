@@ -3,7 +3,7 @@
     <div id="myCarousel" class="carousel slide">
       <div class="carousel-inner">
         <div class="item active">
-          <img src="<?=$app->ruta_img?>/04.jpg" alt="">
+          <img src="<?=$this->app->ruta_img?>/04.jpg" alt="">
           <div class="container">
             <div class="carousel-caption">
               <h1>Example headline.</h1>
@@ -13,7 +13,7 @@
           </div>
         </div>
         <div class="item">
-          <img src="<?=$app->ruta_img?>/02.jpg" alt="">
+          <img src="<?=$this->app->ruta_img?>/02.jpg" alt="">
           <div class="container">
             <div class="carousel-caption">
               <h1>Another example headline.</h1>

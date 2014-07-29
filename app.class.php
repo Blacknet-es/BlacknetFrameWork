@@ -7,9 +7,9 @@
  *
  * @author difusiongrafica
  */
-class app {
+class app 
+{
     /* Variables de ruta */
-
     var $ruta_base;
     var $ruta_absoluta;
     var $ruta_admin;
@@ -42,7 +42,8 @@ class app {
     var $debug_info = array();
     var $debug_error = array();
 
-    public function __construct($nombre_app, $metades, $metatags, $default_lan, $plantilla, $db_host, $db_name, $db_user, $db_pass, $carpeta) {
+    public function __construct($nombre_app, $metades, $metatags, $default_lan, $plantilla, $db_host, $db_name, $db_user, $db_pass, $carpeta) 
+    {
         $this->nombre_app = $nombre_app;
         $this->metades = $metades;
         $this->metatags = $metatags;
@@ -103,7 +104,8 @@ class app {
         
     }
     
-    public function loadModel(){
+    public function loadModel()
+    {
         /* Esta función carga los modelos generalizados */
         
         /* Incluimos la clase componente de donde heredaran los demás componentes */
@@ -116,7 +118,8 @@ class app {
         $this->includeFile('/clases/', 'imagen.class.php');
     }
     
-    public function executeController(){
+    public function executeController()
+    {
         $this->includeFile('/clases/', 'controller.class.php'); /* Cargamos el controlador general */
         
         /* Cargamos el controlador del componente */
@@ -131,7 +134,8 @@ class app {
         $this->controller->{$this->accion.'Action'}();
     }
     
-    public function executeAdminController(){
+    public function executeAdminController()
+    {
         $this->includeFile('/clases/', 'controller.class.php'); /* Cargamos el controlador general */
         
         /* Cargamos el controlador del componente */
@@ -146,7 +150,8 @@ class app {
         $this->controller->{$this->accion.'Action'}();
     }
     
-    public function renderAction($component, $action = 'index'){
+    public function renderAction($component, $action = 'index')
+    {
         //funcion que ejecuta un modulo de un componente concreto
         //Posiblemente dentro de un bloque
         
@@ -160,7 +165,8 @@ class app {
         $controller->{$action.'Action'}();
     }
     
-    public function renderAdminAction($component, $action = 'index'){
+    public function renderAdminAction($component, $action = 'index')
+    {
         //funcion que ejecuta un modulo de un componente concreto
         //Posiblemente dentro de un bloque
         
@@ -174,21 +180,24 @@ class app {
         $controller->{$action.'Action'}();
     }
     
-    public function renderComponent(){
+    public function renderComponent()
+    {
         global $app;
         $data = $this->data;
         include($this->view);
     }
     
-    public function loadAdminClasses(){
+    public function loadAdminClasses()
+    {
         $this->includeFile('/admin/clases/', 'menu.class.php');
         $this->includeFile('/admin/clases/', 'acciones.class.php');
         $this->includeFile('/admin/clases/', 'registro.class.php');
         $this->includeFile('/admin/clases/', 'usuario.class.php');
+        $this->includeFile('/clases/widgets', 'widget.class.php');
     }
 
-
-    public function includeFile($carpeta,$fichero){
+    public function includeFile($carpeta, $fichero)
+    {
         global $app;
         $ruta = $this->ruta_absoluta.$carpeta.$fichero;
         
@@ -197,10 +206,10 @@ class app {
         }
     }
 
-    private function strleft($s1, $s2) {
+    private function strleft($s1, $s2) 
+    {
         return substr($s1, 0, strpos($s1, $s2));
     }
 
 }
 
-?>
