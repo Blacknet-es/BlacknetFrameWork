@@ -137,13 +137,18 @@ class app
     public function executeAdminController()
     {
         $this->includeFile('/clases/', 'controller.class.php'); /* Cargamos el controlador general */
+        $this->includeFile('/clases/', 'admincontroller.class.php'); /* Cargamos el controlador general */
         
         /* Cargamos el controlador del componente */
         $controlador = 'controllerAdmin'.ucfirst($this->seccion).'.php';
         $carpeta = '/componentes/'.$this->seccion.'/admin/';
         
-        $this->includeFile($carpeta,$controlador);
-        $class = $this->seccion.'Controller';
+        if (file_exists ($this->ruta_absoluta.$carpeta.$controlador)) {
+            $this->includeFile($carpeta,$controlador);
+            $class = $this->seccion.'Controller';
+        } else {
+            $class = 'adminController';
+        }
         
         $this->controller = new $class();
         
@@ -173,7 +178,7 @@ class app
         $controlador = 'controllerAdmin'.ucfirst($component).'.php';
         $carpeta = '/componentes/'.$component.'/admin/';
         
-        $this->includeFile($carpeta,$controlador);
+        $this->includeFile($carpeta, $controlador);
         $class = $component.'Controller';
         
         $controller = new $class($component);
@@ -193,7 +198,7 @@ class app
         $this->includeFile('/admin/clases/', 'acciones.class.php');
         $this->includeFile('/admin/clases/', 'registro.class.php');
         $this->includeFile('/admin/clases/', 'usuario.class.php');
-        $this->includeFile('/clases/widgets', 'widget.class.php');
+        $this->includeFile('/clases/widgets/', 'widget.class.php');
     }
 
     public function includeFile($carpeta, $fichero)

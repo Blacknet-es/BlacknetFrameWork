@@ -8,14 +8,14 @@
 class component {
     
     var $id;
-    var $orden;
-    var $table;
-    var $nombre;
+    var $order;
+    var $name;
     var $metades;
     var $metatags;
     var $created_at;
     var $updated_at;
     private $config;
+    var $table;
     
     public function __construct ($id = null)
     {
@@ -41,16 +41,27 @@ class component {
         }
     }
     
-    private function addWidget($var, $widget = 'inputtext')
+    private function addWidget($var, $widget = 'inputtext', $options = array())
     {
         $this->config[$var] = array (
             'widget' => $widget,
+            'options' => $options
         );
     }
     
-    private function getValue($field, $value)
+    public function createTable ()
     {
-        
+        //make in the future
+    }
+    
+    public function updateTable ()
+    {
+        //make in the future
+    }
+    
+    public function save ()
+    {
+    
     }
     
     private function loadData()
@@ -64,5 +75,23 @@ class component {
                 $this->{$v} = $this->getValue($v, $row->{$v});
             }
         }
-    }   
+    }
+    
+    private function getValue ($var, $value)
+    {
+        $direct_values = array ('inputtext', 'textarea');
+        $dates_values = array ('date', 'datetime');
+        
+        //Direct Values
+        if (in_array($this->config[$var], $direct_values)) {
+            return $value;
+        }
+        
+        //Dates Values
+        if (in_array($this->config[$var], $dates_values) || strstr($var, '_at') || strstr($var, 'date') ) {
+            return new DateTime($value);
+        }
+        
+        return $value;
+    }
 }

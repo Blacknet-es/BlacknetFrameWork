@@ -70,7 +70,7 @@ class controller
     {
         global $menu;
         
-        $ruta = $this->app->ruta_absoluta.'/componentes/'.$app->seccion.'/admin/views/'.$file;
+        $ruta = $this->app->ruta_absoluta.'/componentes/'.$this->app->seccion.'/admin/views/'.$file;
         $rutaGeneral = $this->app->ruta_absoluta.'/admin/generalviews/'.$file;
         $this->app->data = $data;
         

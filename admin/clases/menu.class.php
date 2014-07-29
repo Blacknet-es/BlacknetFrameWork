@@ -25,8 +25,8 @@ class menu
         
         $secciones = usort($this->secciones,array('seccion','comparar'));
 
-         foreach ($this->secciones as $seccion){
-              if(count($seccion->subsecciones) > 0){
+         foreach ($this->secciones as $seccion) {
+              if(count($seccion->subsecciones) > 0) {
                     $html .= '<li><a href="#'.$seccion->seccion.'" id="'.$seccion->seccion.'">'.ucfirst($seccion->titulo).'</a>            
                     <ul class="">';
                     foreach ($seccion->subsecciones as $subseccion){
@@ -37,8 +37,7 @@ class menu
                     }
 
                     $html .= '</ul></li>';
-            }
-            else{
+            } else {
                 $html .= '
         <li>
             <a id="'.$seccion->seccion.'"  href="'.$app->ruta_admin.'?seccion='.$seccion->seccion.'" class="">'.ucfirst($seccion->titulo).'</a>
@@ -50,7 +49,8 @@ class menu
         return $html;
     }
 
-    function cargarMenu() {
+    function cargarMenu()
+    {
         global $app;
         $ruta = $app->ruta_absoluta . '/componentes/';
         if (is_dir($ruta)) {
@@ -58,7 +58,6 @@ class menu
                 while (($file = readdir($dh)) !== false) {
                     if (is_dir($ruta . $file) && $file != "." && $file != "..") {
                         if (file_exists($ruta . $file . '/admin/config.php')) {
-
                             include_once($ruta . $file . '/admin/config.php');
                         }
                     }
@@ -68,21 +67,21 @@ class menu
         closedir($dh);
     }
 
-    static function comparar($a, $b){
-        if ($a->orden == $b->orden){
+    static function comparar($a, $b)
+    {
+        if ($a->orden == $b->orden) {
             return 0;
-        }
-        else if ($a->orden > $b->orden){
+        } else if ($a->orden > $b->orden) {
             return -1;
-        }
-        else{
+        } else{
             return 1;
         }
     }
     
 }
 
-class seccion{
+class seccion 
+{
     var $titulo;
     var $seccion;
     var $atributos;
@@ -90,7 +89,8 @@ class seccion{
     var $orden;
     var $subsecciones = array();
 
-    function  __construct($titulo, $seccion,$icono = 'icon-th-list',$orden = 2, $atributos = '') {
+    function  __construct($titulo, $seccion,$icono = 'icon-th-list',$orden = 2, $atributos = '')
+    {
         $this->titulo = $titulo;
         $this->seccion = $seccion;
         $this->icono = $icono;
@@ -98,11 +98,13 @@ class seccion{
         $this->orden = $orden;
     }
 
-    function addSubseccion(subseccion $c){
+    function addSubseccion(subseccion $c)
+    {
         $this->subsecciones[] = $c;
     }
 
-    static  function comparar($a, $b){
+    static  function comparar($a, $b)
+    {
         if ($a->orden == $b->orden){
             //echo " $a->orden es igual a $b->orden :: ";
             return 0;
@@ -118,14 +120,16 @@ class seccion{
     }
 }
 
-class subseccion{
+class subseccion 
+{
     var $titulo;
     var $seccion;
     var $icono;
     var $orden;
     var $atributos;
 
-     function  __construct($titulo, $seccion,$icono = 'ui-icon-document',$orden = 2, $atributos = '') {
+     function  __construct($titulo, $seccion,$icono = 'ui-icon-document',$orden = 2, $atributos = '')
+     {
         $this->titulo = $titulo;
         $this->seccion = $seccion;
         $this->icono = $icono;
@@ -133,7 +137,8 @@ class subseccion{
         $this->atributos = $atributos;
     }
 
-    static function comparar($a, $b){
+    static function comparar($a, $b)
+    {
         if ($a->orden == $b->orden){
             return 0;
         }

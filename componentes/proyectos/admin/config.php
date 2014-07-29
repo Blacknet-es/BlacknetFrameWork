@@ -1,19 +1,15 @@
 <?php
-/* DIFF 3.0 By Difusion Grafica
- * Framework php dinámico
- * Archivo de configuracion para componente.
- */
 
 global $menu;
 
-if (isset($_GET['categoria'])){
+if (isset($_GET['categoria'])) {
     $url = $app->ruta_admin.'/entorno.php?seccion='.$app->seccion.'&accion=list&categoria='.$_GET['categoria'];
-}else{
+} else {
     $url = '';
 }
 
 
-if($app->seccion == 'proyectos'){
+if($app->seccion == 'proyectos') {
 //Creamos un elemento jqgrid que nos ayudará a crear el jav
 $j = new jqgrid($url, 40, '', 'orden', 'asc', '', '');
 
