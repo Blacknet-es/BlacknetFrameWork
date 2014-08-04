@@ -41,6 +41,11 @@ class app
     var $debug;
     var $debug_info = array();
     var $debug_error = array();
+    
+    /* REQUEST VARIABLES */
+    private $get;
+    private $post;
+    private $session;
 
     public function __construct($nombre_app, $metades, $metatags, $default_lan, $plantilla, $db_host, $db_name, $db_user, $db_pass, $carpeta) 
     {
@@ -70,21 +75,24 @@ class app
         $this->ruta_componentes = $this->ruta_base . '/componentes';
 
         $this->ruta_plantilla = $this->ruta_base . '/plantillas/' . $this->plantilla;
+        
+        $this->get = filter_input_array(INPUT_GET);
+        $this->post = filter_input_array(INPUT_POST);
 
-        if (isset($_GET['seccion'])) {
-            $this->seccion = $_GET['seccion'];
+        if (isset($this->get['seccion'])) {
+            $this->seccion = $this->get['seccion'];
         } else {
             $this->seccion = 'inicio';
         }
 
-        if (isset($_GET['accion'])) {
-            $this->accion = $_GET['accion'];
+        if (isset($this->get['accion'])) {
+            $this->accion = $this->get['accion'];
         } else {
             $this->accion = 'index';
         }
 
-        if (isset($_GET['id'])) {
-            $this->id = $_GET['id'];
+        if (isset($this->get['id'])) {
+            $this->id = $this->get['id'];
         } else {
             $this->id = '0';
         }

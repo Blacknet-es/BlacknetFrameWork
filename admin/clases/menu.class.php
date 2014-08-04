@@ -57,19 +57,6 @@ class menu
     function cargarMenu()
     {
         global $app;
-        $ruta = $app->ruta_absoluta . '/componentes/';
-        if (is_dir($ruta)) {
-            if ($dh = opendir($ruta)) {
-                while (($file = readdir($dh)) !== false) {
-                    if (is_dir($ruta . $file) && $file != "." && $file != "..") {
-                        if (file_exists($ruta . $file . '/admin/config.php')) {
-                            include_once($ruta . $file . '/admin/config.php');
-                        }
-                    }
-                }//solo si el archivo es un directorio, distinto que "." y ".."
-            }
-        }
-        closedir($dh);
     }
 
     static function comparar($a, $b)

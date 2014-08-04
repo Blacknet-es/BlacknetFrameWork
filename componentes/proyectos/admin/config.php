@@ -1,15 +1,10 @@
 <?php
 
-global $menu;
-
-if (isset($_GET['categoria'])) {
-    $url = $app->ruta_admin.'/entorno.php?seccion='.$app->seccion.'&accion=list&categoria='.$_GET['categoria'];
-} else {
-    $url = '';
+$url = '';
+if (isset($app->get['categoria'])) {
+    $url = $app->ruta_admin.'/entorno.php?seccion='.$app->seccion.'&accion=list&categoria='.$app->get['categoria'];
 }
 
-
-if($app->seccion == 'proyectos') {
 //Creamos un elemento jqgrid que nos ayudará a crear el jav
 $j = new jqgrid($url, 40, '', 'orden', 'asc', '', '');
 
@@ -23,8 +18,11 @@ $j->ordenable = true;
 
 $acciones = new acciones("Acciones");
 $acciones->btn_destacado = true;
-}
 //creamos añadimos las secciones del menu
-$sec = new seccion("Proyectos", "proyectos",'ui-icon-folder-collapsed');
+$sec = new seccion("Proyectos", "proyectos", 'ui-icon-folder-collapsed');
 
-$menu->addSeccion($sec);
+$this->config['proyectos']['jqgrid'] = $j;
+$this->config['proyectos']['acctions'] = $acciones;
+
+//creamos añadimos las secciones del menu
+$this->menu->addSeccion($sec);
