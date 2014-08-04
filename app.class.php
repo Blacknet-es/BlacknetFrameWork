@@ -198,6 +198,7 @@ class app
         $this->includeFile('/admin/clases/', 'acciones.class.php');
         $this->includeFile('/admin/clases/', 'registro.class.php');
         $this->includeFile('/admin/clases/', 'usuario.class.php');
+        $this->includeFile('/admin/clases/', 'jqgrid.class.php');
         $this->includeFile('/clases/widgets/', 'widget.class.php');
     }
 

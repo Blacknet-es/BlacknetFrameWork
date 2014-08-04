@@ -20,12 +20,5 @@ $app->debug_mode = true; //activamos para el modo depuracion
 $app->loadModel(); //cargamos los modelos necesarios
 $app->loadAdminClasses(); //Cargamos las clases necesarias para la admin
 
-$menu = new menu();
-$menu->cargarMenu();
-
-$usuario = new usuario();
-
 $app->executeAdminController(); //Ejecutamos el controlador
 
-
-?>

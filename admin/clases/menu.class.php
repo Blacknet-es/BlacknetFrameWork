@@ -2,6 +2,11 @@
 class menu
 {
     var $secciones = array();
+    
+    public function __construct()
+    {
+        $this->cargarMenu();
+    }
 
     function addSeccion(seccion $c){
          
@@ -18,12 +23,12 @@ class menu
     }
 
     
-    function mostrarHtml(){
+    function mostrarHtml() {
         global $app;
 
         $html = '';
         
-        $secciones = usort($this->secciones,array('seccion','comparar'));
+        $secciones = usort($this->secciones, array('seccion','comparar'));
 
          foreach ($this->secciones as $seccion) {
               if(count($seccion->subsecciones) > 0) {

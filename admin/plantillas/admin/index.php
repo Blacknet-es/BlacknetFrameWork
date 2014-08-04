@@ -6,35 +6,40 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="shortcut icon" href="<?=$this->app->ruta_img; ?>/favicon.ico" />
 
-        <link rel="stylesheet" type="text/css" media="screen" href="<?=$this->app->ruta_include; ?>/bootstrap/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" media="screen" href="<?=$this->app->ruta_admin; ?>/plantillas/admin/css/admin.css" />
-        <link rel="stylesheet" type="text/css" media="screen" href="<?=$this->app->ruta_admin; ?>/plantillas/admin/css/form.css" />
-        <link rel="stylesheet" type="text/css" media="screen" href="<?=$this->app->ruta_admin; ?>/plantillas/admin/css/pie.css" />
-              
+        <link rel="stylesheet" type="text/css" href="<?=$this->app->ruta_include; ?>/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="<?=$this->app->ruta_admin; ?>/plantillas/admin/css/admin.css" />
+        <link rel="stylesheet" type="text/css" href="<?=$this->app->ruta_admin; ?>/plantillas/admin/css/form.css" />
+        <link rel="stylesheet" type="text/css" href="<?=$this->app->ruta_admin; ?>/plantillas/admin/css/pie.css" />
+
         <meta name="title" content="Panel de administración | <?=$this->app->nombre_app; ?>" />
 
         <title>Panel de administración | <?=$this->app->nombre_app; ?></title>
     </head>
 
-    <body>        
-      <div class="navbar navbar-inverse navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+    <body>
+        <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#"><?=$this->app->nombre_app?></a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">              
+          </button>
+          <a class="navbar-brand" href="#"><?=$this->app->nombre_app?></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
               <?=$menu->mostrarHtml(); // Opciones de menu ?>
               <li><a href="#contact">Ayuda</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="./">opciones de usuario</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
       </div>
-    </div>  
+    </div>
         
         <div class="container-fluid" id="contenedor">
             <?=$this->app->renderComponent(); ?>                    
