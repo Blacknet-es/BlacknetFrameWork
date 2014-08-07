@@ -4,7 +4,7 @@ class adminController extends controller
     private $actions;
     private $jqgrid;
     private $config;
-    private $menu;
+    public $menu;
     
     public function __construct()
     {
@@ -26,12 +26,20 @@ class adminController extends controller
     }
     public function indexAction()
     {
-        $this->app->renderAdminAction($this->app->seccion);
+        $this->renderAdminWithLayout();
     }
     
     public function addAction()
     {
-    
+        $sec = $this->app->seccion;
+        $this->addModel($sec);
+        
+        $object = new $sec();
+        
+        $this->addData('title', ucfirst($sec));
+        $this->addData('object', $object);
+        
+        $this->renderAdminWithLayout('new.php');
     }
     
     public function editAction($id)
@@ -42,6 +50,11 @@ class adminController extends controller
     public function deleteAction($id)
     {
     
+    }
+    
+    public function actionsAction()
+    {
+        $this->renderAdmin('actions.php');
     }
     
     private function loadConfig()

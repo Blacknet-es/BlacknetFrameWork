@@ -1,5 +1,8 @@
+<?php $app->renderAdminAction($app->seccion, 'actions'); ?>
+
 <h4>Listado de <?=$app->seccion?></h4>
 
+<?php if (isset ($app->data->elements) && !empty ($app->data->elements)): ?>
 <table class="table table-striped table-hover table-bordered table-condensed">
     <tr>
         <th>ID</th>
@@ -7,7 +10,7 @@
         <th>VINCULO</th>
         <th>ACCIONES</th>
     </tr>
-    <? foreach ($app->data->elementos as $e): ?>
+    <? foreach ($app->data->elements as $e): ?>
     <tr>
         <td><?=$e->id?></td>
         <td><?=$e->nombre?></td>
@@ -19,3 +22,6 @@
     </tr>
     <? endforeach; ?>
 </table>
+<?php else: ?>
+There are not elements in database.
+<?php endif; ?>

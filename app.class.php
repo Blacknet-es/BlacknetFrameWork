@@ -46,6 +46,10 @@ class app
     private $get;
     private $post;
     private $session;
+    
+    /* REQUESTS FILES */
+    public $js;
+    public $css;
 
     public function __construct($nombre_app, $metades, $metatags, $default_lan, $plantilla, $db_host, $db_name, $db_user, $db_pass, $carpeta) 
     {
@@ -186,8 +190,12 @@ class app
         $controlador = 'controllerAdmin'.ucfirst($component).'.php';
         $carpeta = '/componentes/'.$component.'/admin/';
         
-        $this->includeFile($carpeta, $controlador);
-        $class = $component.'Controller';
+        if (file_exists ($this->ruta_absoluta.$carpeta.$controlador)) {
+            $this->includeFile($carpeta,$controlador);
+            $class = $component.'Controller';
+        } else {
+            $class = 'adminController';
+        }
         
         $controller = new $class($component);
         $controller->{$action.'Action'}();
@@ -212,12 +220,21 @@ class app
 
     public function includeFile($carpeta, $fichero)
     {
-        global $app;
         $ruta = $this->ruta_absoluta.$carpeta.$fichero;
         
         if (!include_once ($ruta)){
             $this->debug_error[] = "APP: No se puede incluir el fichero: ".$ruta;
         }
+    }
+    
+    public function getCss()
+    {
+        return '';
+    }
+    
+    public function getJs()
+    {
+        return '';
     }
 
     private function strleft($s1, $s2) 

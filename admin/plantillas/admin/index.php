@@ -6,10 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="shortcut icon" href="<?=$this->app->ruta_img; ?>/favicon.ico" />
 
-        <link rel="stylesheet" type="text/css" href="<?=$this->app->ruta_include; ?>/bootstrap/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="<?=$this->app->ruta_admin; ?>/plantillas/admin/css/admin.css" />
-        <link rel="stylesheet" type="text/css" href="<?=$this->app->ruta_admin; ?>/plantillas/admin/css/form.css" />
-        <link rel="stylesheet" type="text/css" href="<?=$this->app->ruta_admin; ?>/plantillas/admin/css/pie.css" />
+        <link rel="stylesheet" href="<?=$this->app->ruta_include; ?>/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="<?=$this->app->ruta_include; ?>/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="<?=$this->app->ruta_admin; ?>/plantillas/admin/css/admin.css" />
+        <link rel="stylesheet" href="<?=$this->app->ruta_admin; ?>/plantillas/admin/css/form.css" />
+        <link rel="stylesheet" href="<?=$this->app->ruta_admin; ?>/plantillas/admin/css/pie.css" />
 
         <meta name="title" content="Panel de administración | <?=$this->app->nombre_app; ?>" />
 
@@ -31,7 +32,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-              <?=$menu->mostrarHtml(); // Opciones de menu ?>
+              <?=$this->menu->mostrarHtml(); // Opciones de menu ?>
               <li><a href="#contact">Ayuda</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -57,7 +58,8 @@
     
 
     <script type="text/javascript" src="<?=$this->app->ruta_include; ?>/jquery.min.js"></script>
-    <script type="text/javascript" src="<?=$this->app->ruta_include; ?>/bootstrap/js/bootstrap.min.js"></script>    
+    <script type="text/javascript" src="<?=$this->app->ruta_include; ?>/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<?=$this->app->ruta_include; ?>/acciones/acciones.js"></script> 
     <? //include $this->app->ruta_absoluta.'/includes/widgets.php'; ?>
     </body>
 </html>

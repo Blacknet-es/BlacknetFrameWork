@@ -1,6 +1,5 @@
 <?php
 class info extends component
 {
-    public description;
-    
+    public $description;
 }
