@@ -54,6 +54,20 @@ class component {
             $widget = 'datepicker';
         }
         
+        $global_options = array(
+            'name' => $var,
+            'id' => $var,
+        );
+        
+        if ($var == 'id') {
+            $options['type'] = 'hidden';
+            $widget = 'hidden';
+        } else {
+            $options['type'] = 'text';
+        }
+        
+        $options = array_merge($global_options, $options);
+        
         $this->config[$var] = array (
             'widget' => $widget,
             'options' => $options
@@ -108,11 +122,17 @@ class component {
     
     public function getFrom()
     {
+        $html = '';
+        $protected = array ('config', 'table');
         foreach ($this->config as $key => $field) {
-            $widget = $field['widget'];
-            $options = $field['options'];
-            $this->getWidget($widget, $this->{$key}, $options)->getTemplate();
+            if (!in_array($key, $protected)) {
+                $widget = $field['widget'];
+                $options = $field['options'];
+                $html .= $this->getWidget($widget, $this->{$key}, $options)->getTemplate();
+            }
         }
+        
+        return $html;
     }
     
     public function getWidget($field, $value, $options = array())

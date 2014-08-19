@@ -3,7 +3,7 @@ class widget
 {
     private $original;
     private $procesed;
-    private $template;
+    public $template;
     private $options;
     
     public function __construct($original = null, $options = array())
@@ -51,8 +51,6 @@ class widget
                 }
             }
         }
-        
-        var_dump($html);
         
         if ($this->original != null) {
             $html = str_replace('{VALUE}', $this->getValue(), $html);
