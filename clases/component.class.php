@@ -8,13 +8,10 @@
 class component {
     
     var $id;
-    var $order;
-    var $name;
-    var $metades;
-    var $metatags;
     var $created_at;
     var $updated_at;
-    private $config;
+    var $order;
+    public $config;
     var $table;
     
     public function __construct ($id = null)
@@ -24,25 +21,39 @@ class component {
             $this->id = $id;
             $this->loadData();            
         }
+        
+        $this->config();
     }
 
     public function existePropiedad($propiedad){
         return property_exists($this, $propiedad);
     }
     
-    private function config ()
+    public function config()
     {
-        $vars = get_class_vars(get_class($this));
+        $vars = array_keys(get_class_vars(get_class($this)));
         
-        foreach ($vars as $v) {
-            if (!isset($config[$v])) {
-                $this->addWidget($v);
-            }
+        $order = 10;
+        
+        foreach ($vars as $v) {                
+            $options = array(
+                'order' => $order,
+            );
+
+            $this->addWidget($v, 'inputtext', $options);
+            $order += 10;
         }
     }
     
-    private function addWidget($var, $widget = 'inputtext', $options = array())
+    protected function addWidget($var, $widget = 'inputtext', $options = array())
     {
+        $dates_values = array ('date', 'datetime');
+        
+        //Dates Values
+        if (in_array($var, $dates_values) || strstr($var, '_at') || strstr($var, 'date') ) {
+            $widget = 'datepicker';
+        }
+        
         $this->config[$var] = array (
             'widget' => $widget,
             'options' => $options
@@ -93,5 +104,20 @@ class component {
         }
         
         return $value;
+    }
+    
+    public function getFrom()
+    {
+        foreach ($this->config as $key => $field) {
+            $widget = $field['widget'];
+            $options = $field['options'];
+            $this->getWidget($widget, $this->{$key}, $options)->getTemplate();
+        }
+    }
+    
+    public function getWidget($field, $value, $options = array())
+    {
+        $widget = new $field($value, $options);
+        return $widget;
     }
 }

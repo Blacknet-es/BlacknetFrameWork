@@ -2,7 +2,6 @@
 class adminController extends controller
 {
     private $actions;
-    private $jqgrid;
     private $config;
     public $menu;
     
@@ -18,11 +17,10 @@ class adminController extends controller
         //Load User
         $usuario = new usuario();
         
-        //Set actions and jqgrid options
+        //Set actions and options
         if (isset ($this->config[$this->app->seccion]['actions'])) {
             $this->actions = $this->config[$this->app->seccion]['actions'];
         }
-        $this->jqgrid = $this->config[$this->app->seccion]['jqgrid'];
     }
     public function indexAction()
     {

@@ -214,8 +214,8 @@ class app
         $this->includeFile('/admin/clases/', 'acciones.class.php');
         $this->includeFile('/admin/clases/', 'registro.class.php');
         $this->includeFile('/admin/clases/', 'usuario.class.php');
-        $this->includeFile('/admin/clases/', 'jqgrid.class.php');
         $this->includeFile('/clases/widgets/', 'widget.class.php');
+        $this->includeFolder('/clases/widgets/');
     }
 
     public function includeFile($carpeta, $fichero)
@@ -225,6 +225,17 @@ class app
         if (!include_once ($ruta)){
             $this->debug_error[] = "APP: No se puede incluir el fichero: ".$ruta;
         }
+    }
+    
+    public function includeFolder($carpeta)
+    {
+        $ruta = opendir($this->ruta_absoluta.$carpeta);
+        while ($fich = readdir($ruta)) {
+            if (strstr($fich, 'class.php')) {
+                $this->includeFile($carpeta, $fich);
+            }
+        }
+        
     }
     
     public function getCss()

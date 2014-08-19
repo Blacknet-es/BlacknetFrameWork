@@ -1,3 +1,8 @@
 <h1>New <?=$app->data['title']?></h1>
 
-<?php var_dump($app->data['object']); ?>
+<div class="container">
+    <form role="form">
+        <?php $app->data['object']->getFrom(); ?>  
+    </form>
+</div>
+
