@@ -15,6 +15,14 @@ class widget
             'css' => array(),
             'html' => 'basic.html',
         );
+        
+        if (!isset($this->options['block'])) {
+            $this->options['block'] = 'main';
+        }
+        
+        if (!isset($this->options['title'])) {
+            $this->options['title'] = ucfirst($this->options['name']);
+        }
     }
     
     public function getValue ()

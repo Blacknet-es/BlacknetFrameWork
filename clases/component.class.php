@@ -50,16 +50,17 @@ class component {
         $dates_values = array ('date', 'datetime');
         
         //Dates Values
-        if (in_array($var, $dates_values) || strstr($var, '_at') || strstr($var, 'date') ) {
+        if (in_array($var, $dates_values) || strstr($var, 'date') ) {
             $widget = 'datepicker';
         }
         
         $global_options = array(
             'name' => $var,
             'id' => $var,
+            'block' => 'main',
         );
         
-        if ($var == 'id') {
+        if ($var == 'id' || strstr($var, '_at')) {
             $options['type'] = 'hidden';
             $widget = 'hidden';
         } else {
@@ -120,7 +121,7 @@ class component {
         return $value;
     }
     
-    public function getFrom()
+    public function getFrom($block = 'main')
     {
         $html = '';
         $protected = array ('config', 'table');
@@ -128,7 +129,10 @@ class component {
             if (!in_array($key, $protected)) {
                 $widget = $field['widget'];
                 $options = $field['options'];
-                $html .= $this->getWidget($widget, $this->{$key}, $options)->getTemplate();
+                
+                if ($options['block'] === $block) {
+                    $html .= $this->getWidget($widget, $this->{$key}, $options)->getTemplate();
+                }
             }
         }
         

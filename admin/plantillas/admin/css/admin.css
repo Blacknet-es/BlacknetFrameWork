@@ -1,3 +1,9 @@
 #contenedor {
     padding-top: 60px;
 }
+
+#right-block {
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 3px;
+}
