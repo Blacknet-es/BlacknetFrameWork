@@ -45,6 +45,20 @@ class adminController extends controller
     
     }
     
+    public function saveAction()
+    {
+        $sec = $this->app->seccion;
+        $this->addModel($sec);
+        
+        $object = new $sec();
+        
+        foreach ($this->app->post as $key => $value) {
+            $object->setValue ($key, $value);
+        }
+        
+        $object->save();
+    }
+    
     public function deleteAction($id)
     {
     
