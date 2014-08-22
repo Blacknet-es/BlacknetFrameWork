@@ -47,12 +47,18 @@ class adminController extends controller
     
     public function saveAction()
     {
+        echo json_encode('hola');
+        
+        if (empty($_POST)) {
+            return false;
+        }
+        
         $sec = $this->app->seccion;
         $this->addModel($sec);
         
         $object = new $sec();
         
-        foreach ($this->app->post as $key => $value) {
+        foreach ($_POST as $key => $value) {
             $object->setValue ($key, $value);
         }
         

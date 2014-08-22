@@ -20,6 +20,7 @@ class mysql {
     private $limit_count = "";
     private $mysqli;
     private $result;
+    public $numRows = 0;
 
     public function __construct() {
         global $app;
@@ -88,7 +89,10 @@ class mysql {
         if (!$result) {
             throw new Exception ('MySQL Error: ' . $this->mysqli->error . '<br/>' . $consulta);
         }
-        $this->numRows = $result->num_rows;
+        
+        if ($result !== true) {
+            $this->numRows = $result->num_rows;
+        }
         $this->result = $result;
         return $this;
     }

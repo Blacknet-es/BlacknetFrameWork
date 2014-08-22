@@ -11,6 +11,6 @@ class info extends component
         parent::config();
         $this->addWidget('title', 'inputtext', array('classes' => 'input-lg'));
         $this->addWidget('description', 'textarea', array('order' => 11));
-        $this->addWidget('order', 'hidden');
+        $this->addWidget('order', 'hidden', array('nobd' => true));
     }
 }

@@ -86,24 +86,123 @@ class component {
     }
     
     public function save ()
-    {
+    {        
+        if ($this->exists($this->id)) {
+            $this->update();
+        } else {
+            $this->insert();
+        }
+        
+        return $this;
+    }
     
+    private function exists($id)
+    {
+        if ($this->id == null || $this->id == 0) {
+            return false;
+        }
+        
+        $sql = new mysql();
+        $sql->query("SELECT id FROM $this->table WHERE id = $this->id");
+        
+        if ($this->numRows) {
+            return true;
+        }
+        
+        return false;       
+    }
+    
+    private function getArrayValues()
+    {
+        $vars = array_keys(get_class_vars(get_class($this)));
+        
+        $values = array();
+        
+        foreach ($vars as $v) {
+            if ($this->isBdValue($v)) {
+                $values[$v] = "'".$this->{$v}."'";
+            }
+        }
+        
+        if (isset ($values['id'])) {
+            $values['updated_at'] = 'NOW()';
+        } else {
+            $values['updated_at'] = 'NULL';
+            $values['created_at'] = 'NOW()';
+        }
+        
+        foreach ($values as $key => $val) {
+            if ($val == null) {
+                $values[$key] = 'NULL';
+            }
+        }
+        
+        return $values;
+    }
+    
+    private function isBdValue($value)
+    {
+        $no_bd_properties = array ('table', 'config');
+        if (in_array($value, $no_bd_properties)) {
+            return false;
+        }
+        
+        if ($value == 'id' && !$this->exists($this->id)) {
+            return false;
+        }
+        
+        $config = $this->config[$value]['options'];
+        
+        if (isset($config['nobd']) && $config['nobd'] === true) {
+            return false;
+        }
+        
+        return true;
+    }
+    
+    private function update()
+    {
+        $sql = new mysql();
+        $query = "UPDATE $this->table SET ";
+        
+        $values = $this->getArrayValues();
+        
+        $query .= implode(', ', $values);
+        
+        $query .= " WHERE id = $this->id";
+        
+        $sql->query($query);
+    }
+    
+    private function insert()
+    {
+        $sql = new mysql();
+        
+        $values = $this->getArrayValues();
+        
+        $query = "INSERT INTO $this->table ";
+        
+        $query .= '( '. implode (', ', array_keys($values)). ' ) ';
+        $query .= 'VALUES ( '. implode (', ', array_values($values)). ' ) ';
+        
+        $sql->query($query);
+        
     }
     
     private function loadData()
     {
         $mysql = new mysql();
         $row = $mysql->query("SELECT * FROM $this->table WHERE id = $id");
-        $vars = get_class_vars(get_class($this));
+        $vars = array_keys(get_class_vars(get_class($this)));
         
         foreach ($vars as $v) {
             if (isset($row->{$v})) {
-                $this->{$v} = $this->getValue($v, $row->{$v});
+                $this->{$v} = $this->setValue($v, $row->{$v});
             }
         }
     }
     
-    private function getValue ($var, $value)
+    public function getValue ($var, $value)
     {
         $direct_values = array ('inputtext', 'textarea');
         $dates_values = array ('date', 'datetime');
@@ -119,6 +218,11 @@ class component {
         }
         
         return $value;
+    }
+    
+    public function setValue ($var, $value)
+    {
+        $this->{$var} = $value;
     }
     
     public function getFrom($block = 'main')
