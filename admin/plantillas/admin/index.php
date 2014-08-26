@@ -12,8 +12,6 @@
         <link rel="stylesheet" href="<?=$this->app->ruta_admin; ?>/plantillas/admin/css/form.css" />
         <link rel="stylesheet" href="<?=$this->app->ruta_admin; ?>/plantillas/admin/css/pie.css" />
 
-        <meta name="title" content="Panel de administración | <?=$this->app->nombre_app; ?>" />
-
         <title>Panel de administración | <?=$this->app->nombre_app; ?></title>
     </head>
 

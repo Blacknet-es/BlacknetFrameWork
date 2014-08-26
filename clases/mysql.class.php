@@ -85,11 +85,11 @@ class mysql {
     }
 
     public function consulta($consulta) {
-        $result = $this->mysqli->query($consulta, MYSQLI_USE_RESULT);
+        $result = $this->mysqli->query($consulta);
         if (!$result) {
             throw new Exception ('MySQL Error: ' . $this->mysqli->error . '<br/>' . $consulta);
         }
-        
+
         if ($result !== true) {
             $this->numRows = $result->num_rows;
         }

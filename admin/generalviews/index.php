@@ -10,7 +10,7 @@
         <th class="acciones">ACCIONES</th>
     </tr>
     <?php foreach ($app->data['elements'] as $e): ?>
-    <tr data-acction="select" data-id="<?=$e->id?>">
+    <tr data-action="select" data-id="<?=$e->id?>">
         <td><?=$e->id?></td>
         <td><?=$e->title?></td>
         <td class="text-right">

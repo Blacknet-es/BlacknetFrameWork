@@ -1,4 +1,4 @@
-<div class="btn-group btn-group-justified">
+<div class="btn-group btn-group-justified block-actions">
   <div class="btn-group">
     <button type="button" class="btn btn-success" data-action="new">
         <i class="fa fa-plus"></i>
@@ -6,13 +6,13 @@
     </button>
   </div>
   <div class="btn-group">
-    <button type="button" class="btn btn-warning disabled">
+    <button type="button" class="btn btn-warning disabled edit">
         <i class="fa fa-edit"></i>
         Editar
     </button>
   </div>
   <div class="btn-group">
-    <button type="button" class="btn btn-danger disabled">
+    <button type="button" class="btn btn-danger disabled delete">
         <i class="fa fa-eraser"></i>
         Eliminar
     </button>

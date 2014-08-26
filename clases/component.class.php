@@ -108,8 +108,8 @@ class component {
         
         $sql = new mysql();
         $sql->query("SELECT id FROM $this->table WHERE id = $this->id");
-        
-        if ($this->numRows) {
+                
+        if ($sql->numRows()) {
             return true;
         }
         
@@ -170,8 +170,13 @@ class component {
         $query = "UPDATE $this->table SET ";
         
         $values = $this->getArrayValues();
+        $to_sql = array();
         
-        $query .= implode(', ', $values);
+        foreach ($values as $key => $value) {
+            $to_sql[] = $key ." = ".$value;
+        }
+        
+        $query .= implode(', ', $to_sql);
         
         $query .= " WHERE id = $this->id";
         
@@ -197,7 +202,7 @@ class component {
     {
         if (empty ($data)) {
             $mysql = new mysql();
-            $row = $mysql->query("SELECT * FROM $this->table WHERE id = $id");
+            $row = $mysql->query("SELECT * FROM $this->table WHERE id = $this->id")->fetchOne();
         } else {
             $row = $data;
         }
@@ -256,5 +261,12 @@ class component {
     {
         $widget = new $field($value, $options);
         return $widget;
+    }
+    
+    public function delete()
+    {
+        $sql = new mysql();
+        
+        $sql->query("DELETE FROM $this->table WHERE id = $this->id");
     }
 }

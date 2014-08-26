@@ -47,15 +47,21 @@ class adminController extends controller
         $this->renderAdminWithLayout('new.php');
     }
     
-    public function editAction($id)
+    public function editAction()
     {
-    
+        $sec = $this->app->seccion;
+        $this->addModel($sec);
+        
+        $object = new $sec($this->app->id);
+        
+        $this->addData('title', ucfirst($sec));
+        $this->addData('object', $object);
+        
+        $this->renderAdminWithLayout('new.php');
     }
     
     public function saveAction()
-    {
-        echo json_encode('hola');
-        
+    {        
         if (empty($_POST)) {
             return false;
         }
@@ -72,9 +78,14 @@ class adminController extends controller
         $object->save();
     }
     
-    public function deleteAction($id)
+    public function deleteAction()
     {
-    
+        $sec = $this->app->seccion;
+        $this->addModel($sec);
+        
+        $object = new $sec($_GET['id']);
+        
+        $object->delete();
     }
     
     public function actionsAction()
