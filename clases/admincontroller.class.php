@@ -24,6 +24,13 @@ class adminController extends controller
     }
     public function indexAction()
     {
+        $sec = $this->app->seccion;
+        $this->addModel($sec);
+        
+        $collection = new collection($sec);
+        
+        $this->app->data['elements'] = $collection->elements;
+        
         $this->renderAdminWithLayout();
     }
     

@@ -7,3 +7,9 @@
     background-color: #f5f5f5;
     border-radius: 3px;
 }
+
+#admin-list .acciones {
+    width: 10%;
+    max-width: 200px;
+    min-width: 80px;
+}

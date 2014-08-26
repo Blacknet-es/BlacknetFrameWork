@@ -7,19 +7,23 @@
  */
 class component {
     
-    var $id;
-    var $created_at;
-    var $updated_at;
-    var $order;
+    public $id;
+    public $created_at;
+    public $updated_at;
+    public $order;
     public $config;
     var $table;
     
-    public function __construct ($id = null)
+    public function __construct ($id = null, $options = array())
     {
         $this->table = get_class($this);
         if ($id != null) {
             $this->id = $id;
-            $this->loadData();            
+            if (isset($options['data'])) {
+                $this->loadData($options['data']);
+            } else {
+                $this->loadData();
+            }      
         }
         
         $this->config();
@@ -189,15 +193,20 @@ class component {
         
     }
     
-    private function loadData()
+    private function loadData($data = array())
     {
-        $mysql = new mysql();
-        $row = $mysql->query("SELECT * FROM $this->table WHERE id = $id");
-        $vars = array_keys(get_class_vars(get_class($this)));
+        if (empty ($data)) {
+            $mysql = new mysql();
+            $row = $mysql->query("SELECT * FROM $this->table WHERE id = $id");
+        } else {
+            $row = $data;
+        }
+        
+        $vars = array_keys(get_class_vars(get_class($this)));        
         
         foreach ($vars as $v) {
             if (isset($row->{$v})) {
-                $this->{$v} = $this->setValue($v, $row->{$v});
+                $this->setValue($v, $row->{$v});
             }
         }
     }
@@ -221,7 +230,7 @@ class component {
     }
     
     public function setValue ($var, $value)
-    {
+    {   
         $this->{$var} = $value;
     }
     
