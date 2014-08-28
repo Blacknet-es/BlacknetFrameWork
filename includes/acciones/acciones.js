@@ -54,8 +54,7 @@ function action_delete()
 
 function action_delete_modal()
 {
-    alert('delete_modal');
-    action_delete();
+    $('#delete-modal').modal('show');
 }
 
 function action_form_save()
@@ -86,6 +85,6 @@ function action_select()
     $('.block-actions .edit').data('id', elem_selected);
     
     $('.block-actions .delete').removeClass('disabled');
-    $('.block-actions .delete').data('action', 'delete');
+    $('.block-actions .delete').data('action', 'delete_modal');
     $('.block-actions .delete').data('id', elem_selected);
 }
